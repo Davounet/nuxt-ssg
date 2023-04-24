@@ -1,10 +1,11 @@
 <template>
-  <StoryblokComponent v-if="story" :blok="story.content" />
+  <div>
+    <pre class="text-xs">{{ pokemon }}</pre>
+  </div>
 </template>
 
 <script setup>
-if (!process.server) {
-  console.log(window.__NUXT__.data)
-}
-const story = await useAsyncStoryblok('home', { version: 'draft' }, { customParent: 'http://localhost:3000/' })
+const { data: pokemon } = await useAsyncData('home', () => $fetch(`https://pokeapi.co/api/v2/pokemon/${utils.random(1, 500)}`), {
+  transform: input => ({ id: input.id, name: input.name })
+})
 </script>
