@@ -6,5 +6,5 @@
 </template>
 
 <script setup>
-const test = useLazyAsyncData('cart', () => $fetch('/api/test'))
+const { data: test } = await useLazyAsyncData('cart', () => $fetch('/api/test'))
 </script>
