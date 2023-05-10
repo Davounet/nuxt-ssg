@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-const { data: pokemon } = await useFetch(`https://pokeapi.co/api/v2/pokemon/${utils.random(1, 500)}`, {
-  transform: input => ({ id: input.id, name: input.name })
-})
+
+const { data: test } = await useLazyAsyncData('cart', () => $fetch('/api/test'))
+
 </script>
