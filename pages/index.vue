@@ -1,13 +1,18 @@
 <template>
   <div>
-    <pre class="text-xs">{{ pokemon }}</pre>
-    <pre class="text-xs">{{ test }}</pre>
+    <nav>
+      <ul>
+        <li v-for="pokemon in pokemons.results" :key="pokemon.name">
+          <NuxtLink :to="`/${pokemon.name}`">
+            {{ pokemon.name }}
+          </NuxtLink>
+        </li>
+      </ul>
+    </nav>
   </div>
 </template>
 
 <script setup>
-const { data: test } = useAsyncData('cart', () => $fetch('/api/test'))
-const { data: pokemon } = await useAsyncData('home', () => $fetch(`https://pokeapi.co/api/v2/pokemon/${utils.random(1, 500)}`), {
-  transform: input => ({ id: input.id, name: input.name })
-})
+// const { data: test } = useAsyncData('cart', () => $fetch('/api/test'))
+const { data: pokemons } = await useFetch(`https://pokeapi.co/api/v2/pokemon/`)
 </script>

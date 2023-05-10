@@ -3,6 +3,9 @@ export default defineNuxtConfig({
   modules: [['@storyblok/nuxt', { accessToken: 'IRoS8BaEUKjNwQEqlupPHQtt' }], '@nuxtjs/tailwindcss'],
 
   nitro: {
-    prerender: { crawlLinks: true }
+    prerender: { crawlLinks: true, ignore: ['/cart'] }
+  },
+  experimental: {
+    payloadExtraction: true
   }
 })
