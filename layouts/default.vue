@@ -4,12 +4,12 @@
       <li><nuxt-link to="/">Home</nuxt-link></li>
       <li><nuxt-link to="/about">About</nuxt-link></li>
       <li>
-        <button
+        <NuxtLink
           class="bg-gray-100 px-4 py-1.5 hover:bg-gray-200"
-          @click="goToCart"
+          to="/cart"
         >
           Cart
-        </button>
+        </NuxtLink>
       </li>
     </ul>
     <div>
@@ -17,10 +17,3 @@
     </div>
   </div>
 </template>
-
-<script setup>
-const router = useRouter();
-function goToCart() {
-  router.push("/cart");
-}
-</script>
